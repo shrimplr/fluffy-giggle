@@ -9,21 +9,21 @@ end
 function love.update(dt)
 	local f = Update_State[Game.State]
 	if f then
-		f()
+		f(dt)
 	end
 end
 
 function love.keypressed(key)
 	local f = Keypressed_State[Game.State]
 	if f then
-		f()
+		f(key)
 	end
 end
 
-function love.mousepressed(key)
+function love.mousepressed(x, y, button)
 	local f = Mousepressed_State[Game.State]
 	if f then
-		f()
+		f(x, y, button)
 	end
 end
 

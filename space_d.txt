@@ -1,0 +1,2 @@
+Player - position(x,y), sped, acceleratioj, theta, hp
+Asteroid - x, y, v, a, size 

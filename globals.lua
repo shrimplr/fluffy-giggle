@@ -3,16 +3,40 @@ require("Modules/sfx")
 
 require("Assets/load_assets")
 
-
 Game = {}
 Game.State = 0
+Game.totaltime = 0
 
-Load_State = {}
+require("Modules.space_obj")
+require("space")
 
-Update_State = {}
+Load_State = {
+    [0] = IntroLoad,
+    [0.5] = PreGameLoad,
+    [1] = GameLoad,
+}
 
-Keypressed_State = {}
+Update_State = {
+    [0] = IntroUpdate,
+    [0.5] = PreGameUpdate,
+    [1] = GameUpdate,
+}
 
-Mousepressed_State = {}
+Keypressed_State = {
+    [0] = IntroKey,
+    [0.5] = PreGameKey,
+    [1] = GameKey,
+    [2] = OverKey
+}
 
-Draw_State = {}
+Mousepressed_State = {
+    [0] = IntroMouse,
+    [1] = GameMouse,
+}
+
+Draw_State = {
+    [0] = IntroDraw,
+    [0.5] = PreGameDraw,
+    [1] = GameDraw,
+    [2] = OverDraw
+}
