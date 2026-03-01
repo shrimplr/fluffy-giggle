@@ -19,14 +19,17 @@ function IntroKey(k)
 end
 
 function IntroDraw()
-    love.graphics.print('Idonfuckinknow', 300, 250)
-    love.graphics.print('Press space to start', 300, 350)
+    --love.graphics.print('Idonfuckinknow', 300, 250)
+    local image = Image.get("Ahh_bg")
+    love.graphics.draw(image, 0, 0)
+    love.graphics.setFont(NewFont)
+    love.graphics.print('Press space to start', NewFont, 250, 300)
     
 end
 
 function PreGameLoad()
     Crosses = 0
-    Player.x = 300
+    Player.x = 365
     Player.y = 500
     Player.theta = -math.pi/2
     Player.hp = 100
@@ -84,16 +87,7 @@ function PreGameDraw()
     if Crosses >= 1 then image = Image.get("pregame2") end
     love.graphics.draw(image, 0, 0)
 
-        love.graphics.polygon("line", {
-        Player.x + Player.size/2 + math.cos(Player.theta)*(Player.size/2),
-        Player.y + Player.size/2 + math.sin(Player.theta)*(Player.size/2),
-        Player.x + Player.size/2 + math.cos(Player.theta + math.pi + math.pi/4)*(Player.size/2),
-        Player.y + Player.size/2 + math.sin(Player.theta + math.pi + math.pi/4)*(Player.size/2),
-        Player.x + Player.size/2,
-        Player.y + Player.size/2,
-        Player.x + Player.size/2 + math.cos(Player.theta + math.pi - math.pi/4)*(Player.size/2),
-        Player.y + Player.size/2 + math.sin(Player.theta + math.pi - math.pi/4)*(Player.size/2),
-})  
+        Player:draw()
 end
 
 function GameUpdate(dt)
@@ -196,30 +190,23 @@ function GameDraw()
     local image = Image.get("space_bg")
     love.graphics.draw(image, 0, 0)
 
-    love.graphics.polygon("line",
-    {
-        Player.x + Player.size/2 + math.cos(Player.theta)*(Player.size/2),
-        Player.y + Player.size/2 + math.sin(Player.theta)*(Player.size/2),
-        Player.x + Player.size/2 + math.cos(Player.theta + math.pi + math.pi/4)*(Player.size/2),
-        Player.y + Player.size/2 + math.sin(Player.theta + math.pi + math.pi/4)*(Player.size/2),
-        Player.x + Player.size/2,
-        Player.y + Player.size/2,
-        Player.x + Player.size/2 + math.cos(Player.theta + math.pi - math.pi/4)*(Player.size/2),
-        Player.y + Player.size/2 + math.sin(Player.theta + math.pi - math.pi/4)*(Player.size/2),
-})  
+    Player:draw()
 
 for i, ast in pairs(Asteroids) do
-    love.graphics.circle("line", ast.x + ast.size/2, ast.y + ast.size/2, ast.size/2)
+    --love.graphics.circle("line", ast.x + ast.size/2, ast.y + ast.size/2, ast.size/2)
+    local image = Image.get("asteroid")
+    love.graphics.draw(image, ast.x + (ast.size/60), ast.y + (ast.size/60) , 0, ast.size/60, ast.size/60)
 end
-
+    love.graphics.setFont(NewFont)
     love.graphics.print("HP: "..math.floor(Player.hp), 0, 0)
-    love.graphics.print("Time: "..math.floor(Game.totaltime), 0, 15)
+    love.graphics.print("Time: "..math.floor(Game.totaltime), 2, 17)
 
 end
 function OverDraw()
-    love.graphics.print("*Dies*",300, 250)
-    love.graphics.print("Press space to return", 300, 300)
-    love.graphics.print("Total time: "..math.floor(Game.totaltime), 300, 350)
+    love.graphics.setFont(NewFont)
+    love.graphics.print("*Dies*",250, 250)
+    love.graphics.print("Press space to return", 250, 300)
+    love.graphics.print("Total time: "..math.floor(Game.totaltime), 250, 350)
 end
 
 function OverKey(k)

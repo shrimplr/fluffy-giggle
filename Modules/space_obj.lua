@@ -10,7 +10,23 @@ function Object.collision(thing1, thing2)
     return delta_x*delta_x + delta_y*delta_y <= R*R
 end
 
-Player = Object.new(300, 500, 0, 0, 0, 0, 50)
+Player = Object.new(365, 500, 0, 0, 0, 0, 50)
 Player.hp = 100
 Player.theta = -math.pi/2
 
+function Player:draw()
+    --love.graphics.polygon("line",
+  --  {
+       -- Player.x + Player.size/2 + math.cos(Player.theta)*(Player.size/2),
+        --Player.y + Player.size/2 + math.sin(Player.theta)*(Player.size/2),
+        --Player.x + Player.size/2 + math.cos(Player.theta + math.pi + math.pi/4)*(Player.size/2),
+        --Player.y + Player.size/2 + math.sin(Player.theta + math.pi + math.pi/4)*(Player.size/2),
+        --Player.x + Player.size/2,
+        --Player.y + Player.size/2,
+        --Player.x + Player.size/2 + math.cos(Player.theta + math.pi - math.pi/4)*(Player.size/2),
+        --Player.y + Player.size/2 + math.sin(Player.theta + math.pi - math.pi/4)*(Player.size/2),
+--})  
+    local image = Image.get("rocket")
+    love.graphics.draw(image, Player.x + Player.size/2, Player.y + Player.size/2, Player.theta + math.pi/2, 1, 1, Player.size/2, Player.size/2)
+    
+end
