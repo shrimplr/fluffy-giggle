@@ -26,7 +26,8 @@ Keypressed_State = {
     [0] = IntroKey,
     [0.5] = PreGameKey,
     [1] = GameKey,
-    [2] = OverKey
+    [2] = OverKey,
+    [3] = WinKey
 }
 
 Mousepressed_State = {
@@ -38,5 +39,6 @@ Draw_State = {
     [0] = IntroDraw,
     [0.5] = PreGameDraw,
     [1] = GameDraw,
-    [2] = OverDraw
+    [2] = OverDraw,
+    [3] = WinDraw
 }

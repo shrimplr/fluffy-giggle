@@ -166,13 +166,21 @@ function GameUpdate(dt)
             end
             if ast.size > 80 and ast.size <= 100 then
                 Player.hp = Player.hp - 55
+                
             end
             Asteroids[i] = nil
+            love.audio.play(hit)
         end
         if Player.hp <= 0 then
             Game.State = 2
             love.audio.stop(bgm)
             love.audio.play(die)
+            love.audio.setVolume(0.5)
+        end
+        if Game.totaltime >= 20 then
+            Game.State = 3
+            love.audio.stop(bgm)
+            love.audio.play(win)
             love.audio.setVolume(0.5)
         end
     end
@@ -210,6 +218,7 @@ end
     love.graphics.print("Time: "..math.floor(Game.totaltime), 2, 17)
 
 end
+
 function OverDraw()
     love.graphics.setFont(NewFont)
     love.graphics.print("*Dies*",250, 250)
@@ -221,5 +230,17 @@ function OverKey(k)
     if k == "space" then
         Game.State = 0
         love.audio.stop(die)
+    end
+end
+
+function WinDraw()
+    love.graphics.setFont(NewFont)
+    love.graphics.print("Congrats, you didn't die!", 250, 300)
+    love.graphics.print("Press space to return", 250, 350)
+end
+function WinKey(k)
+    if k == "space" then
+        Game.State = 0
+        love.audio.stop(win)
     end
 end
