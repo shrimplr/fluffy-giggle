@@ -177,7 +177,7 @@ function GameUpdate(dt)
             love.audio.play(die)
             love.audio.setVolume(0.5)
         end
-        if Game.totaltime >= 20 then
+        if Game.totaltime >= 100 then
             Game.State = 3
             love.audio.stop(bgm)
             love.audio.play(win)
