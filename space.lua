@@ -20,6 +20,8 @@ end
 
 function IntroDraw()
     --love.graphics.print('Idonfuckinknow', 300, 250)
+    love.audio.play(introm)
+    love.audio.setVolume(0.5)
     local image = Image.get("Ahh_bg")
     love.graphics.draw(image, 0, 0)
     love.graphics.setFont(NewFont)
@@ -76,6 +78,7 @@ function PreGameUpdate(dt)
     end
     if Crosses >= 2 then
         GameLoad()
+        love.audio.stop(introm)
         Game.State = 1
     end
 
@@ -91,6 +94,8 @@ function PreGameDraw()
 end
 
 function GameUpdate(dt)
+    love.audio.play(bgm)
+    love.audio.setVolume(0.3)
     Game.totaltime = Game.totaltime + dt
 
     Player.vx = 0
@@ -166,6 +171,9 @@ function GameUpdate(dt)
         end
         if Player.hp <= 0 then
             Game.State = 2
+            love.audio.stop(bgm)
+            love.audio.play(die)
+            love.audio.setVolume(0.5)
         end
     end
 end
@@ -212,5 +220,6 @@ end
 function OverKey(k)
     if k == "space" then
         Game.State = 0
+        love.audio.stop(die)
     end
 end
