@@ -3,7 +3,7 @@ function IntroUpdate(dt)
 end
 
 function IntroLoad()
-    
+    love.audio.setVolume(0.5)
 end
 
 function IntroMouse(x, y, b)
@@ -15,8 +15,30 @@ function IntroKey(k)
         Game.State = 0.5
         PreGameLoad()
     end
+    if k == "s" then
+        Game.State = 0.1
+    --    SettingsLoad()
+      --  SettingsDraw()
+    end
     
 end
+
+--function SettingsLoad()
+    
+--end
+
+--function SettingsDraw()
+  --  local images = {"Assets/Intro.png", "Assets/set_def.png"}
+    --local image = love.graphics.newArrayImage(images)
+    --love.graphics.drawLayer(image, 1, 0, 0)
+    --love.graphics.drawLayer(image, 2, 0, 0)
+--end
+
+--function SettingsKey(k)
+  --  if k == "1" then
+        Game.State = 0
+    --end
+--end
 
 function IntroDraw()
     --love.graphics.print('Idonfuckinknow', 300, 250)
@@ -25,7 +47,8 @@ function IntroDraw()
     local image = Image.get("Ahh_bg")
     love.graphics.draw(image, 0, 0)
     love.graphics.setFont(NewFont)
-    love.graphics.print('Press space to start', NewFont, 250, 300)
+    love.graphics.print('Press space to start', NewFont, 250, 250)
+  --  love.graphics.print ('Press "s" to access the settings', NewFont, 180, 300)
     
 end
 
