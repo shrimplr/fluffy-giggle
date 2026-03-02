@@ -177,7 +177,7 @@ function GameUpdate(dt)
             love.audio.play(die)
             love.audio.setVolume(0.5)
         end
-        if Game.totaltime >= 100 then
+        if Game.totaltime >= 200 then
             Game.State = 3
             love.audio.stop(bgm)
             love.audio.play(win)
@@ -234,6 +234,8 @@ function OverKey(k)
 end
 
 function WinDraw()
+    local image = Image.get("winbg")
+    love.graphics.draw(image, 0, 0)
     love.graphics.setFont(NewFont)
     love.graphics.print("Congrats, you didn't die!", 250, 300)
     love.graphics.print("Press space to return", 250, 350)
