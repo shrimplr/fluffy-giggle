@@ -1,5 +1,6 @@
 function love.conf(t)
 	t.identity = "Ahhteroids"
+	t.window.icon = "Assets/asteroid.png"
 	t.version = "11.3"
 	t.console = false                   -- Attach a console (boolean, Windows only)
 	t.window.title = "Ahhteroids"
